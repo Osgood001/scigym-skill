@@ -57,44 +57,9 @@ Every step logs `--motivation` ("why are we running this experiment") + obs + re
 - Parameters must have boundary checks
 - N consecutive runs with no improvement → hibernate
 
-## Real-world Examples
-
-| Project | Domain | Status |
-|---------|--------|--------|
-| **fib-gym** | FIB milling parameter optimization | Benchmark verified (<5% error) |
-| **quantum-cal-gym** | Superconducting qubit calibration | Real hardware connected, Cryochamber running |
-| **AutoResearch** | Crystal structure RL search + DFT verification | 24/7 on Aliyun |
-
-## Pipeline
-
-```
-Phase 1: Benchmark
-  └─ Extract metrics from papers / hardware measurements
-  └─ Write validation script → quantified error bounds
-
-Phase 2: Research Environment
-  └─ CLI: run_experiment.py --motivation "..." → log.jsonl
-  └─ Optional: FastAPI server for stateful sessions
-  └─ Optional: Gymnasium env for RL / constrained experiments
-
-Phase 3: Interface
-  └─ Mock → Hardware → HPC (unified config switch)
-
-Phase 4: AutoRun
-  └─ gh repo view GiggleLiu/cryochamber --readme
-  └─ cryo init → cryo.toml + CLAUDE.md
-  └─ cryo daemon + cron keepalive + Zulip notifications
-
-Phase 5: Submit
-  └─ scigym.json + GitHub topic scigym-research-env
-  └─ Auto-discovered by scigym-registry
-```
-
 ## Links
 
 - [scigym-registry](https://github.com/Osgood001/scigym-registry) — auto-discovery registry
-- [fib-gym](https://github.com/Osgood001/fib-gym) — FIB milling gym
-- [quantum-cal-gym](https://github.com/Osgood001/quantum-cal-gym) — qubit calibration gym
 - [GiggleLiu/cryochamber](https://github.com/GiggleLiu/cryochamber) — AI agent persistence framework
 
 ---
