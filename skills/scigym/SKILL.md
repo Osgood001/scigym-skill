@@ -54,12 +54,14 @@ Phase 1: Benchmark  →  Phase 2: CLI Environment  →  Phase 3: Interface  → 
   从论文提取指标        包装 CLI + logging              连接真实硬件/计算       Cryochamber 部署      发布
 ```
 
-**Phase 2 成熟度阶梯（按需选择）：**
+**Phase 2 成熟度阶梯（不是高低，是不同适用场景）：**
 ```
-最简可用：  run_experiment.py --motivation "..." + log.jsonl
-进一步：    FastAPI server（有状态会话，HTTP 调用）
-完整形态：  Gymnasium env（支持 RL 训练，包在 CLI 上面）
+CLI + logging      — 最快落地，最灵活，Agent 直接 subprocess 调用
+FastAPI server     — 有状态会话，多步共享上下文
+Gymnasium env      — 维护运行中环境状态，适合受限实验 / RL / 理论-实验混合
 ```
+
+Gymnasium 的核心不是"标准"，而是：**底层对 Agent 不透明**（它看不到真值，只能通过 step() 探索），防止 reward hack，实现 authentic 探索。CLI 也可以做到这点，但 Gymnasium 的 step/reset/obs 结构在需要跨步保持状态时更自然。
 
 详见子技能文档：
 - [phase1-benchmark.md](phase1-benchmark.md)
