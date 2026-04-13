@@ -1,7 +1,7 @@
 <div align="center">
   <img src="logo.svg" width="160" alt="SciGym Logo"/>
   <h1>SciGym</h1>
-  <p><strong>Automated Research Machine — Claude Code Skill</strong></p>
+  <p><strong>科研自动化工作流 — AI Agent Skill</strong></p>
   <p>
     <a href="README_EN.md">English</a>
   </p>
@@ -11,37 +11,37 @@
 
 ## SciGym 是什么？
 
-SciGym 是一个 **Claude Code Skill**，帮助科研人员将重复性实验自动化，构建 24/7 自主运行的 AI 实验循环。
+SciGym 是一套**科研自动化工作流文档**，帮助 AI Agent 引导研究人员构建 24/7 自主运行的实验循环。
 
 核心框架：**Benchmark（独立验证）→ 研究环境（CLI / Gym）→ AutoRun（自主执行）**
 
 没有 Benchmark，RL 会自欺欺人；没有好的实验环境，探索成本过高；没有 AutoRun，人就被绑在机器旁边。三者缺一不可。
 
-## 快速上手
+## 安装方法
 
-```bash
-git clone https://github.com/Osgood001/scigym-skill \
-    ~/.claude/skills/scigym
+把这个链接发给你的 Agent，让它自己读文档、按需安装：
 
-# 在 Claude Code 中调用：
-# /scigym
+```
+https://github.com/Osgood001/scigym-skill
 ```
 
-## 子 Skill 说明
+Agent 会读取对应的文档，与你交互确认细节，然后执行安装。
 
-| Skill | 触发词 | 功能 |
-|-------|--------|------|
-| `/scigym` | 建 gym / SciGym / 自动化研究 | 完整 pipeline 入口 |
-| `/scigym-benchmark` | 建 benchmark / 验证数据 | 从论文/硬件提取基准数据，编写验证脚本 |
-| `/scigym-gym` | 建研究环境 / 包成 CLI | CLI + logging 优先，Gymnasium / FastAPI 可选 |
-| `/scigym-interface` | 接硬件 / 接集群 | Mock / 硬件 / HPC 后端统一切换 |
-| `/scigym-autorun` | 接 Cryochamber / 让它自己跑 | Cryochamber 配置、CLAUDE.md 任务描述、Zulip 推送 |
-| `/scigym-submit` | 发布 gym / 提交 registry | scigym.json 清单 + GitHub Topics + 注册表收录 |
+## 子文档说明
+
+| 文档 | 内容 |
+|------|------|
+| [skills/scigym/SKILL.md](skills/scigym/SKILL.md) | 完整 pipeline 入口与总览 |
+| [phase1-benchmark.md](skills/scigym/phase1-benchmark.md) | 从论文/硬件提取基准数据，编写验证脚本 |
+| [phase2-gym.md](skills/scigym/phase2-gym.md) | CLI + logging 优先；Gymnasium / FastAPI 可选 |
+| [phase3-interface.md](skills/scigym/phase3-interface.md) | Mock / 硬件 / HPC 后端统一切换 |
+| [phase4-autorun.md](skills/scigym/phase4-autorun.md) | Cryochamber 配置、CLAUDE.md 任务描述、Zulip 推送 |
+| [submit.md](skills/scigym/submit.md) | scigym.json 清单 + GitHub Topics + 注册表收录 |
 
 ## 核心设计原则
 
 **研究环境三层（按需选择，不是高低）**
-- **CLI + logging** — 最快落地，Agent 直接 subprocess 调用，最灵活
+- **CLI + logging** — 最快落地，Agent 直接调用，最灵活
 - **FastAPI server** — 有状态会话，多步实验共享上下文
 - **Gymnasium env** — 维护运行中环境状态，底层对 Agent 不透明（防 reward hack），适合受限实验 / RL 训练 / 理论-实验混合研究
 
@@ -87,5 +87,5 @@ gh api repos/你的用户名/你的repo名/topics \
 ---
 
 <div align="center">
-  <sub>Built with Claude Code · Powered by Cryochamber · Indexed by scigym-registry</sub>
+  <sub>Powered by Cryochamber · Indexed by scigym-registry</sub>
 </div>

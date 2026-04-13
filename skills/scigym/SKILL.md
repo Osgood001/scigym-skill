@@ -1,18 +1,18 @@
 # SciGym — Automated Research Machine
 
-## When to Use This Skill
+## 适用场景
 
 触发条件（满足任一）：
-- 用户说「建 gym」「SciGym」「自动化研究环境」「auto research」
 - 用户有一套模拟器/实验装置，想让 AI Agent 自主运行实验
+- 用户想把重复性科研流程自动化，构建 24/7 运行的实验循环
 - 用户想把研究环境发布给社区复用
 
-**子技能**：调用对应子技能处理各阶段
-- `/scigym:benchmark` — 从论文/真机数据建立 benchmark
-- `/scigym:gym` — 封装研究环境（CLI 优先，Gymnasium 可选）
-- `/scigym:interface` — 连接真实硬件/计算集群
-- `/scigym:autorun` — 部署 Cryochamber 实现 24/7 自主实验
-- `/scigym:submit` — 发布到社区，附加 scigym.json + GitHub topic
+**子文档**：
+- [phase1-benchmark.md](phase1-benchmark.md) — 建立独立验证基准
+- [phase2-gym.md](phase2-gym.md) — 包装研究环境（CLI / Gymnasium / FastAPI）
+- [phase3-interface.md](phase3-interface.md) — 连接真实硬件/计算集群
+- [phase4-autorun.md](phase4-autorun.md) — 部署 Cryochamber 实现 24/7 自主实验
+- [submit.md](submit.md) — 发布到社区
 
 ---
 

@@ -1,7 +1,7 @@
 <div align="center">
   <img src="logo.svg" width="160" alt="SciGym Logo"/>
   <h1>SciGym</h1>
-  <p><strong>Automated Research Machine — Claude Code Skill</strong></p>
+  <p><strong>Scientific Research Automation Workflow — AI Agent Skill</strong></p>
   <p>
     <a href="README.md">中文</a>
   </p>
@@ -11,28 +11,32 @@
 
 ## What is SciGym?
 
-SciGym is a **Claude Code skill** that guides researchers in building fully automated scientific experiment loops. It provides a structured pipeline — **Benchmark → Research Environment → AutoRun** — to turn repetitive lab experiments into 24/7 autonomous AI workflows.
+SciGym is a **research automation workflow document set** that guides AI agents in helping researchers build 24/7 autonomous experiment loops.
 
-## Quick Start
+Core pipeline: **Benchmark (independent validation) → Research Environment (CLI / Gym) → AutoRun (autonomous execution)**
 
-```bash
-git clone https://github.com/Osgood001/scigym-skill \
-    ~/.claude/skills/scigym
+Without Benchmark, RL will fool itself. Without a good research environment, exploration costs too much. Without AutoRun, researchers stay chained to their machines.
 
-# Invoke in Claude Code:
-# /scigym
+## Installation
+
+Just send this link to your Agent and let it read the docs and install:
+
+```
+https://github.com/Osgood001/scigym-skill
 ```
 
-## Sub-skills
+The Agent will read the relevant documents, confirm details with you interactively, then execute the setup.
 
-| Skill | Trigger | What it does |
-|-------|---------|--------------|
-| `/scigym` | `SciGym / auto research` | Full pipeline overview & entry point |
-| `/scigym-benchmark` | `build benchmark` | Extract paper data, build validation scripts |
-| `/scigym-gym` | `wrap as CLI / build env` | CLI + logging first; Gymnasium / FastAPI optional |
-| `/scigym-interface` | `connect hardware / cluster` | Mock / Hardware / HPC backend switching |
-| `/scigym-autorun` | `connect Cryochamber` | Cryochamber setup, CLAUDE.md task description, Zulip integration |
-| `/scigym-submit` | `publish gym` | `scigym.json` manifest + GitHub Topics + registry submission |
+## Documents
+
+| Document | Content |
+|----------|---------|
+| [skills/scigym/SKILL.md](skills/scigym/SKILL.md) | Full pipeline overview & entry point |
+| [phase1-benchmark.md](skills/scigym/phase1-benchmark.md) | Extract paper/hardware data, build validation scripts |
+| [phase2-gym.md](skills/scigym/phase2-gym.md) | CLI + logging first; Gymnasium / FastAPI optional |
+| [phase3-interface.md](skills/scigym/phase3-interface.md) | Mock / Hardware / HPC backend switching |
+| [phase4-autorun.md](skills/scigym/phase4-autorun.md) | Cryochamber setup, CLAUDE.md task description, Zulip |
+| [submit.md](skills/scigym/submit.md) | scigym.json manifest + GitHub Topics + registry |
 
 ## Core Design
 
@@ -47,7 +51,7 @@ Every step logs `--motivation` ("why are we running this experiment") + obs + re
 **Benchmark Principles**
 1. **Independent** — never use the same model for both training and validation
 2. **Auditable** — data sources must be traceable (paper DOI / experiment records)
-3. **Quantified error** — provide confidence bounds, not just "looks close enough"
+3. **Quantified error** — provide confidence bounds
 
 **AutoRun Safety Rules** (written in CLAUDE.md)
 - Parameters must have boundary checks
@@ -86,12 +90,6 @@ Phase 5: Submit
   └─ Auto-discovered by scigym-registry
 ```
 
-## Requirements
-
-- [Claude Code](https://github.com/anthropics/claude-code) (claude-sonnet-4-6 or later)
-- Python ≥ 3.10, `numpy`; `gymnasium` optional
-- For AutoRun: [GiggleLiu/cryochamber](https://github.com/GiggleLiu/cryochamber)
-
 ## Links
 
 - [scigym-registry](https://github.com/Osgood001/scigym-registry) — auto-discovery registry
@@ -102,5 +100,5 @@ Phase 5: Submit
 ---
 
 <div align="center">
-  <sub>Built with Claude Code · Powered by Cryochamber · Indexed by scigym-registry</sub>
+  <sub>Powered by Cryochamber · Indexed by scigym-registry</sub>
 </div>
